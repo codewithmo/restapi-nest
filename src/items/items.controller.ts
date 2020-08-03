@@ -8,12 +8,18 @@ import {
   Put,
 } from '@nestjs/common';
 import { CreateItemDto } from './dto/create-item.dto';
+import { ItemsService } from './items.service';
+import { Item } from './interfaces/item.interface';
+import { AxiosResponse } from 'axios';
+import { Observable } from 'rxjs';
 
 @Controller('items')
 export class ItemsController {
+  constructor(private readonly itemsService: ItemsService) {}
+
   @Get()
-  findAll(): string {
-    return 'Get all items';
+  findAll(): Observable<AxiosResponse<Item[]>> {
+    return this.itemsService.findAll();
   }
 
   @Get(':id')
