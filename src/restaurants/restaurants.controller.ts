@@ -7,7 +7,7 @@ import {
   Delete,
   Put,
 } from '@nestjs/common';
-import { CreateRestaurantDto } from './dto/create-restaurant.dto';
+import { CreateRatingDto } from './dto/create-rating.dto';
 import { RestaurantsService } from './restaurants.service';
 import { Restaurant } from './interfaces/restaurant.interface';
 import { AxiosResponse } from 'axios';
@@ -17,31 +17,21 @@ import { Observable } from 'rxjs';
 export class RestaurantsController {
   constructor(private readonly restaurantsService: RestaurantsService) {}
 
+  //This Get method is to get zomato restaurant list.
   @Get()
   findAll(): Observable<AxiosResponse<Restaurant[]>> {
     return this.restaurantsService.findAll();
   }
 
+  //This Post method is to post rating of restaurant using required fields.
+  @Post()
+  create(@Body() createRatingDto: CreateRatingDto): string {
+    return `Name: ${createRatingDto.name} Desc: ${createRatingDto.restaurantid}`;
+  }
+
+  //This Get method is to get ratings of restaurants using restaurant id as path param.
   @Get(':id')
   findOne(@Param('id') id): string {
     return `Item ${id}`;
-  }
-
-  @Post()
-  create(@Body() createRestaurantDto: CreateRestaurantDto): string {
-    return `Name: ${createRestaurantDto.name} Desc: ${createRestaurantDto.description}`;
-  }
-
-  @Delete(':id')
-  delete(@Param('id') id): string {
-    return `Delete ${id}`;
-  }
-
-  @Put(':id')
-  update(
-    @Body() updateRestaurantDto: CreateRestaurantDto,
-    @Param('id') id,
-  ): string {
-    return `Update ${id}- Name: ${updateRestaurantDto.name}`;
   }
 }

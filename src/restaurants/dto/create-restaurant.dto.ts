@@ -1,5 +1,0 @@
-export class CreateRestaurantDto {
-  readonly name: string;
-  readonly description: string;
-  readonly qty: number;
-}
