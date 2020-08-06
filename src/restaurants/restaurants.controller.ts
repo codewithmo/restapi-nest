@@ -1,12 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  Put,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { CreateRatingDto } from './dto/create-rating.dto';
 import { RestaurantsService } from './restaurants.service';
 import { Restaurant } from './interfaces/restaurant.interface';
@@ -25,13 +17,21 @@ export class RestaurantsController {
 
   //This Post method is to post rating of restaurant using required fields.
   @Post()
-  create(@Body() createRatingDto: CreateRatingDto): string {
-    return `Name: ${createRatingDto.name} Desc: ${createRatingDto.restaurantid}`;
+  async create(@Body() createRatingDto: CreateRatingDto): Promise<Restaurant> {
+    const result = await this.restaurantsService.createUserRating(
+      createRatingDto,
+    );
+    return result;
+  }
+
+  @Get('ratings')
+  async findAllRatings(): Promise<Restaurant[]> {
+    return await this.restaurantsService.getAllRatings();
   }
 
   //This Get method is to get ratings of restaurants using restaurant id as path param.
-  @Get(':id')
-  findOne(@Param('id') id): string {
-    return `Item ${id}`;
+  @Get('rating/:id')
+  async findOne(@Param('id') id: string): Promise<Restaurant[]> {
+    return await this.restaurantsService.getRatingById(id);
   }
 }
