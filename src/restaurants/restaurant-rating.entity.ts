@@ -11,7 +11,7 @@ export class RestaurantRating {
   @Column()
   emailid: string;
 
-  @Column()
+  @Column({ type: 'float4', nullable: true })
   rating: number;
 
   @Column()
