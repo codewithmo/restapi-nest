@@ -6,24 +6,9 @@
 [travis-url]: https://travis-ci.org/nestjs/nest
 [linux-image]: https://img.shields.io/travis/nestjs/nest/master.svg?label=linux
 [linux-url]: https://travis-ci.org/nestjs/nest
-  
-  <p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://gitter.im/nestjs/nestjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge"><img src="https://badges.gitter.im/nestjs/nestjs.svg" alt="Gitter" /></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+  <p align="center">A REST API application using <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications and <a href="https://www.postgresql.org/" target="blank">Postgres</a> for persistence.</p>
+   
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
@@ -47,29 +32,33 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## Features
+
+1. API to fetch the list of restaurants in India using Zomato APIs (Get you own access key from Zomota's website). <pre>(method: Get; route: localhost:3000/restaurants)</pre>
+
+2. An api via which a user can post a rating on a restaurant, with his name and mailId. No login system. The API body params should carry name, email id, rating & restaurant id.<pre>(method: Post; route: localhost:3000/restaurants/rating)</pre>
+
+3. Api to fetch ratings of restaurants, passing restaurant Id as path param.<pre>(method: Get; path_param:restaurant_id; route: localhost:3000/restaurants/rating/{res_id})</pre>
+
+4. Api to fetch ratings of all restaurants.<pre>(method: Get; route: localhost:3000/restaurants/ratings)</pre>
+
+## Post json format example
 
 ```bash
-# unit tests
-$ npm run test
+{
+  "name": "user",              #this value can't be empty and should be string;
+  "emailid": "user@email.com", #this value should be in proper mail format;
+  "restaurantid": "12344312",
+  "rating": 4.5                #this value should be number with range of 0-5;
+}
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```
 
-## Support
+## Swagger
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+`localhost:3000/api`
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-  Nest is [MIT licensed](LICENSE).
+- Author - [MohammedAli Momin](https://codewithmo.github.io/myportfolio/)
+- LinkedIn - [Codewithmo](www.linkedin.com/in/codewithmo)
