@@ -46,7 +46,7 @@ $ npm run start:dev
 {
   "name": "user",              #this value can't be empty and should be string;
   "emailid": "user@email.com", #this value should be in proper mail format;
-  "restaurantid": "12344312",
+  "restaurantid": "12344312",  #this should be number string;
   "rating": 4.5                #this value should be number with range of 0-5;
 }
 

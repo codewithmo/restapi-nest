@@ -1,4 +1,10 @@
-import { IsEmail, IsNotEmpty, IsNumber, IsString } from 'class-validator';
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  IsNumberString,
+} from 'class-validator';
 
 export class CreateRatingDto {
   readonly id?: number;
@@ -14,5 +20,6 @@ export class CreateRatingDto {
   readonly rating: number;
 
   @IsNotEmpty()
+  @IsNumberString()
   readonly restaurantid: string;
 }
