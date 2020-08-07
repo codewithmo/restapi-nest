@@ -4,7 +4,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RestaurantsModule } from './restaurants/restaurants.module';
 import { RestaurantRating } from './restaurants/restaurant-rating.entity';
-// import configdb from './configdb/db-keys';
 
 @Module({
   imports: [
